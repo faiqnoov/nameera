@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Customers from '../views/Customers.vue'
 import Reservations from '../views/Reservations.vue'
 import CustDetails from '../views/CustDetails.vue'
+import AddRes from '../views/AddRes.vue'
 
 const routes = [
   {
@@ -19,6 +20,12 @@ const routes = [
     path: '/admin/cust/:id',
     name: 'CustDetails',
     component: CustDetails,
+    props: true
+  },
+  {
+    path: '/admin/cust/:id/add-res',
+    name: 'AddRes',
+    component: AddRes,
     props: true
   },
   {

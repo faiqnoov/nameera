@@ -1,10 +1,14 @@
 <template>
   <h1>Customer Details</h1>
 
-  <!-- <p>IdCust: {{ cust.id }}</p> -->
-  <p>Nama: {{ cust.nama }}</p>
-  <p>Alamat: {{ cust.alamat }}</p>
-  <h2>Detal reservasi </h2>  
+  <div v-if="cust">
+    <!-- <p>IdCust: {{ cust.id }}</p> -->
+    <p>Nama: {{ cust.nama }}</p>
+    <p>Alamat: {{ cust.alamat }}</p>
+  </div>
+  <h2>Detal reservasi </h2>
+
+  <router-link :to="{ name: 'AddRes' }">Tambah Reservasi</router-link>  
 
   <table>
     <tr>
