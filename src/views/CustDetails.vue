@@ -1,10 +1,13 @@
 <template>
   <h1>Customer Details</h1>
 
-  <!-- <p>IdCust: {{ cust.id }}</p> -->
-  <p>Nama: {{ cust.nama }}</p>
-  <p>Alamat: {{ cust.alamat }}</p>
-  <h2>Detal reservasi </h2>  
+  <div v-if="cust">
+    <p>Nama: {{ cust.nama }}</p>
+    <p>Alamat: {{ cust.alamat }}</p>
+  </div>
+  <h2>Detal reservasi </h2>
+
+  <router-link :to="{ name: 'AddRes' }">Tambah Reservasi</router-link>
 
   <table>
     <tr>
@@ -27,7 +30,7 @@
       <td>{{ res.tgl }}</td>
       <td>{{ res.jam }}</td>
       <td>{{ res.treatment }}</td>
-      <td>{{ res.kodeProduk }}</td>
+      <td>{{ res.kodeProd }}</td>
       <td>{{ res.biaya }}</td>
       <td>{{ res.biaya2 }}</td>
       <td>{{ res.lokasi }}</td>
