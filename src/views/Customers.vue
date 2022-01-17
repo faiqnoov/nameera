@@ -1,6 +1,8 @@
 <template>
   <h1>Customers Page</h1>
 
+  <router-link :to="{ name: 'AddCust' }">Tambah Customer</router-link>
+
   <table>
     <tr>
       <th>Id</th>
