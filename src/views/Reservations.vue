@@ -18,6 +18,7 @@
       <th>Usia/BB</th>
       <th>Next</th>
       <th>status</th>
+      <th>action</th>
     </tr>
     <tr v-for="res in reservations" :key="res.id">
       <!-- <td>{{ res.id }}</td> -->
@@ -35,20 +36,24 @@
       <td>{{ res.growth }}</td>
       <td>{{ res.nextTreat }}</td>
       <td>{{ res.status }}</td>
+      <td><button @click="deleteRes(res.id)">X</button></td>
     </tr>
   </table> 
 </template>
 
 <script>
 import getCollection from '@/composables/getCollection'
+import delDoc from '@/composables/delDoc'
 
 export default {
   setup() {
     const { documents: reservations } = getCollection('reservations')
 
-    console.log(reservations)
+    const deleteRes = (id) => {
+      delDoc('reservations', id)
+    }
 
-    return { reservations }
+    return { reservations, deleteRes }
   }
 }
 </script>
