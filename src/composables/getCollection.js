@@ -14,11 +14,14 @@ const getCollection = (col, que) => {
     colRef = query(colRef, where(...que))
   }
 
+  let results = []
+
   const unsub = onSnapshot(colRef, (snapshot) => {
-    let results = []
     snapshot.docs.forEach(doc => {
+      // console.log('snapshot: ', typeof(doc), doc.data().treatment)
       results.push({ ...doc.data(), id: doc.id })
     })
+    // console.log('results: ', results)
 
     documents.value = results
   })
@@ -27,7 +30,7 @@ const getCollection = (col, que) => {
     onInvalidate(() => unsub());
   })
 
-  return { documents }
+  return { documents, results }
 }
 
 export default getCollection

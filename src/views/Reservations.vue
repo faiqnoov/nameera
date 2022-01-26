@@ -23,7 +23,9 @@
     <tr v-for="res in reservations" :key="res.id">
       <!-- <td>{{ res.id }}</td> -->
       <td>{{ res.idCust }}</td>
-      <td>{{ res.namaCust }}</td>
+      <td>
+        <router-link :to="{ name: 'CustDetails', params: { id: res.idCust }}">{{ res.namaCust }}</router-link>
+      </td>
       <td>{{ res.tgl }}</td>
       <td>{{ res.jam }}</td>
       <td>{{ res.treatment }}</td>
@@ -36,7 +38,10 @@
       <td>{{ res.growth }}</td>
       <td>{{ res.nextTreat }}</td>
       <td>{{ res.status }}</td>
-      <td><button @click="deleteRes(res.id)">X</button></td>
+      <td>
+        <button><router-link :to="{ name:'EditRes', params: { id: res.id } }">E</router-link></button>
+        <button @click="deleteRes(res.id)">X</button>
+      </td>
     </tr>
   </table> 
 </template>

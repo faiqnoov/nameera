@@ -5,6 +5,8 @@ import Reservations from '../views/Reservations.vue'
 import CustDetails from '../views/CustDetails.vue'
 import AddRes from '../views/AddRes.vue'
 import AddCust from '../views/AddCust.vue'
+import EditCust from '../views/EditCust.vue'
+import EditRes from '../views/EditRes.vue'
 
 const routes = [
   {
@@ -26,13 +28,23 @@ const routes = [
     path: '/admin/cust/:id',
     name: 'CustDetails',
     component: CustDetails,
-    props: true
+    props: true  // mengizinkan route params dipakai sebagai prop pada component
+  },
+  {
+    path: '/admin/cust/:id/edit',
+    name: 'EditCust',
+    component: EditCust
   },
   {
     path: '/admin/cust/:id/add-res',
     name: 'AddRes',
     component: AddRes,
     props: true
+  },
+  {
+    path: '/admin/res/:id/edit',
+    name: 'EditRes',
+    component: EditRes
   },
   {
     path: '/admin/res',

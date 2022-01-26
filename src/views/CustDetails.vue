@@ -6,9 +6,9 @@
       <p>Nama: {{ cust.nama }}</p>
       <p>Alamat: {{ cust.alamat }}</p>
     </div>
-    <h2>Detal reservasi </h2>
+    <h2>Detail reservasi </h2>
 
-    <router-link :to="{ name: 'AddRes' }">Tambah Reservasi</router-link>
+    <router-link :to="{ name: 'AddRes', params: { id: id } }">Tambah Reservasi</router-link>
 
     <table>
       <tr>
@@ -39,12 +39,18 @@
         <td>{{ res.ket }}</td>
         <td>{{ res.growth }}</td>
         <td>{{ res.status }}</td>
-        <td><button @click="deleteRes(res.id)">X</button></td>
+        <td>
+          <button><router-link :to="{ name:'EditRes', params: { id: res.id } }">E</router-link></button>
+          <button @click="deleteRes(res.id)">X</button>
+        </td>
       </tr>
     </table>
   
     <br><br>
-    <button @click="deleteCust(route.params.id, cust.nama)">Hapus Customer</button>  
+    <button>
+      <router-link :to="{ name:'EditCust', params: { id: id } }">Edit Customer</router-link>
+    </button>
+    <button @click="deleteCust(id, cust.nama)">Hapus Customer</button>
   </div>
   <div v-else>
     <h3>Data customer tidak ditemukan :(</h3>
@@ -76,12 +82,12 @@ export default {
     }
 
     const deleteCust = (id, nama) => {
-      delDoc('customers', id, nama)
-      
-      router.push({ name: 'Customers' })
+      if(delDoc('customers', id, nama)) {
+        router.push({ name: 'Customers' })
+      }
     }
 
-    return { cust, reservations, deleteRes, deleteCust, route }
+    return { cust, reservations, deleteRes, deleteCust }
   }
 }
 </script>
