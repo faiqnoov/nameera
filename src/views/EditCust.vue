@@ -41,15 +41,10 @@ export default {
     const router = useRouter()
 
     const { document: cust } = getDoc('customers', route.params.id)
-    const { documents: reservations, results: results } = getCollection(
+    const { results: reservations } = getCollection(
       'reservations',
       ['idCust', '==', route.params.id]
     )
-    // console.log(typeof(reservations))
-    // console.log(reservations)
-    // for(let res in reservations) {
-    //   console.log(res._value)
-    // }
 
     const handleUpdate = () => {
       const docRef = doc(db, 'customers', route.params.id)
@@ -65,7 +60,7 @@ export default {
       })
 
       // update field nama data reservasi ybs
-      results.forEach((r) => {
+      reservations.forEach((r) => {
         const docRef2 = doc(db, 'reservations', r.id)
 
         updateDoc(docRef2, {
