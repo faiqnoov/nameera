@@ -2,7 +2,8 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link :to="{ name: 'Customers' }">Customers</router-link> | 
-    <router-link :to="{ name: 'Reservations' }">Reservations</router-link>
+    <router-link :to="{ name: 'Reservations' }">Reservations</router-link> | 
+    <router-link :to="{ name: 'Finance' }">Finance</router-link>
   </div>
   <router-view/>
 </template>

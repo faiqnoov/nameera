@@ -7,6 +7,7 @@ import AddRes from '../views/AddRes.vue'
 import AddCust from '../views/AddCust.vue'
 import EditCust from '../views/EditCust.vue'
 import EditRes from '../views/EditRes.vue'
+import Finance from '../views/Finance.vue'
 
 const routes = [
   {
@@ -50,6 +51,11 @@ const routes = [
     path: '/admin/res',
     name: 'Reservations',
     component: Reservations
+  },
+  {
+    path: '/admin/fin',
+    name: 'Finance',
+    component: Finance
   },
 ]
 
