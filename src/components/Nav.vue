@@ -1,9 +1,14 @@
 <template>
-  <div id="nav">
-    <router-link :to="{ name: 'Dashboard' }">Dashboard</router-link> |
-    <router-link :to="{ name: 'Customers' }">Customers</router-link> | 
-    <router-link :to="{ name: 'Reservations' }">Reservations</router-link> |
-    <button @click="handleClick">Logout</button>
+  <div v-if="user" id="nav">
+    <div>
+      <p>logged in as {{ user.email }}</p>
+    </div>
+    <div>
+      <router-link :to="{ name: 'Dashboard' }">Dashboard</router-link> |
+      <router-link :to="{ name: 'Customers' }">Customers</router-link> | 
+      <router-link :to="{ name: 'Reservations' }">Reservations</router-link> |
+      <button @click="handleClick">Logout</button>
+    </div>
   </div>
   <router-view/>
 </template>
