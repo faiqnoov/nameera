@@ -7,12 +7,18 @@ import AddRes from '../views/AddRes.vue'
 import AddCust from '../views/AddCust.vue'
 import EditCust from '../views/EditCust.vue'
 import EditRes from '../views/EditRes.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/admin/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
   },
   {
     path: '/admin/cust',
