@@ -9,53 +9,86 @@ import EditCust from '../views/EditCust.vue'
 import EditRes from '../views/EditRes.vue'
 import Dashboard from '../views/Dashboard.vue'
 
+// firebase
+import { auth } from '../firebase/config'
+
+// route guards
+const requireAuth = (to, from, next) => {
+  let user = auth.currentUser
+  if (!user) {
+    next({ name: 'Home' })
+  } else {
+    next()
+  }
+}
+
+const requireNoAuth = (to, from, next) => {
+  let user = auth.currentUser
+  if (user) {
+    next({ name: 'Dashboard' })
+  } else {
+    next()
+  }
+}
+
+
+
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/admin/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/cust',
     name: 'Customers',
-    component: Customers
+    component: Customers,
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/cust/add',
     name: 'AddCust',
-    component: AddCust
+    component: AddCust,
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/cust/:id',
     name: 'CustDetails',
     component: CustDetails,
-    props: true  // mengizinkan route params dipakai sebagai prop pada component
+    props: true,  // mengizinkan route params dipakai sebagai prop pada component
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/cust/:id/edit',
     name: 'EditCust',
-    component: EditCust
+    component: EditCust,
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/cust/:id/add-res',
     name: 'AddRes',
     component: AddRes,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/res/:id/edit',
     name: 'EditRes',
-    component: EditRes
+    component: EditRes,
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/res',
     name: 'Reservations',
-    component: Reservations
+    component: Reservations,
+    beforeEnter: requireAuth
   },
 ]
 

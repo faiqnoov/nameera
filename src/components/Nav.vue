@@ -15,6 +15,8 @@
 
 <script>
 import getUser from '../composables/getUser'
+import { useRouter } from 'vue-router'
+import { watchEffect } from 'vue'
 
 // firebase
 import { auth } from '../firebase/config'
@@ -23,10 +25,19 @@ import { signOut } from 'firebase/auth'
 export default {
   setup() {
     const { user } = getUser()
+    const router = useRouter()
 
     const handleClick = () => {
       signOut(auth)
     }
+
+    // redirect unauthenticated users
+    watchEffect(() => {
+      if (!user.value) {
+        router.push({ name: 'Home' })
+      }
+    })
+    
     return { handleClick, user }
   }
 }
