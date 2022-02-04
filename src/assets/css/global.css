@@ -1,0 +1,23 @@
+table a {
+  text-decoration: none;
+  color: inherit;
+}
+
+td, th {
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+/* material icons */
+.material-icons-outlined {
+  cursor: pointer;
+}
+
+.material-icons-outlined.md-14 {
+  font-size: 14px;
+}
+
+.material-icons-outlined.md-18 {
+  font-size: 18px;
+}

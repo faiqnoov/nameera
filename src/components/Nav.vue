@@ -1,16 +1,41 @@
 <template>
   <div v-if="user" id="nav">
-    <div>
-      <p>logged in as {{ user.email }}</p>
-    </div>
-    <div>
-      <router-link :to="{ name: 'Dashboard' }">Dashboard</router-link> |
-      <router-link :to="{ name: 'Customers' }">Customers</router-link> | 
-      <router-link :to="{ name: 'Reservations' }">Reservations</router-link> |
-      <button @click="handleClick">Logout</button>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <router-link :to="{ name: 'Dashboard' }" class="navbar-brand">
+          <img src="../assets/img/weblogo.svg" alt="logo" height="24" class="align-top">
+        </router-link>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link :to="{ name: 'Dashboard' }" class="nav-link">Dashboard</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'Customers' }" class="nav-link">Customers</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'Reservations' }" class="nav-link">Reservations</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="material-icons-outlined me-1">person</span>{{ user.email }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#" @click="handleClick">Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
-  <router-view/>
+  <div class="container pt-4">
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -42,3 +67,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.router-link-active {
+  font-weight: bold;
+  /* border-bottom: 2px solid gray; */
+}
+</style>

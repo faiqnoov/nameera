@@ -1,50 +1,89 @@
 <template>
-  <h1>Customer Details</h1>
+  <h2>Customer Details</h2>
 
   <div v-if="cust">
-    <div>
-      <p>Nama: {{ cust.nama }}</p>
-      <p>Alamat: {{ cust.alamat }}</p>
+    <div class="col-md-7">
+      <table class="table table-sm table-borderless">
+        <tbody>
+          <tr>
+            <th scope="row" style="width: 20%;">Nama</th>
+            <td  style="width: 80%;">: {{ cust.nama }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Nama Ortu</th>
+            <td>: {{ cust.namaOrtu }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Alamat</th>
+            <td>: {{ cust.alamat }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Medsos</th>
+            <td>: {{ cust.medsos }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Tanggal lahir</th>
+            <td>: {{ cust.tglLahir }}</td>
+          </tr>
+          <tr>
+            <th scope="row">No. Telepon</th>
+            <td>: {{ cust.noTelp }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <h2>Detail reservasi </h2>
 
-    <router-link :to="{ name: 'AddRes', params: { id: id } }">Tambah Reservasi</router-link>
-
-    <table>
-      <tr>
-        <th>IdCust</th>
-        <th>Nama</th>
-        <th>Tanggal</th>
-        <th>Jam</th>
-        <th>Treatment</th>
-        <th>KP</th>
-        <th>Biaya</th>
-        <th>Biaya2</th>
-        <th>Lokasi</th>
-        <th>Ket</th>
-        <th>Usia/BB</th>
-        <th>status</th>
-        <th>action</th>
-      </tr>
-      <tr v-for="res in reservations" :key="res.id">
-        <td>{{ res.idCust }}</td>
-        <td>{{ res.namaCust }}</td>
-        <td>{{ res.tgl }}</td>
-        <td>{{ res.jam }}</td>
-        <td>{{ res.treatment }}</td>
-        <td>{{ res.kodeProd }}</td>
-        <td>{{ res.biaya }}</td>
-        <td>{{ res.biaya2 }}</td>
-        <td>{{ res.lokasi }}</td>
-        <td>{{ res.ket }}</td>
-        <td>{{ res.growth }}</td>
-        <td>{{ res.status }}</td>
-        <td>
-          <button><router-link :to="{ name:'EditRes', params: { id: res.id } }">E</router-link></button>
-          <button @click="deleteRes(res.id)">X</button>
-        </td>
-      </tr>
-    </table>
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Riwayat reservasi</h5>
+        <router-link :to="{ name: 'AddRes', params: { id: id } }">
+          <button type="button" class="btn btn-primary btn-sm d-flex align-items-center">
+            <span class="material-icons-outlined">add</span>
+          </button>
+        </router-link>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover table-sm">
+            <thead class="table-light">
+              <tr>
+                <th>Tanggal</th>
+                <th>Jam</th>
+                <th>Treatment</th>
+                <th>KP</th>
+                <th>Biaya</th>
+                <th>Biaya2</th>
+                <th>Lokasi</th>
+                <th>Ket</th>
+                <th>Usia/BB</th>
+                <th>status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="res in reservations" :key="res.id">
+                <td>{{ res.tgl }}</td>
+                <td>{{ res.jam }}</td>
+                <td>{{ res.treatment }}</td>
+                <td>{{ res.kodeProd }}</td>
+                <td>{{ res.biaya }}</td>
+                <td>{{ res.biaya2 }}</td>
+                <td>{{ res.lokasi }}</td>
+                <td>{{ res.ket }}</td>
+                <td>{{ res.growth }}</td>
+                <td>{{ res.status }}</td>
+                <td>
+                  <router-link :to="{ name:'EditRes', params: { id: res.id } }">
+                    <span class="material-icons-outlined text-primary">edit</span>
+                  </router-link>
+                  <span @click="deleteRes(res.id)" class="material-icons-outlined text-danger">delete_outline</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   
     <br><br>
     <button>
@@ -94,4 +133,4 @@ export default {
 
 <style>
 
-</style>vue
+</style>
