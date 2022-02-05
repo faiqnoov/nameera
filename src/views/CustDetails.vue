@@ -1,5 +1,5 @@
 <template>
-  <h2>Customer Details</h2>
+  <page-title>Customer Details</page-title>
 
   <div v-if="cust">
     <div class="col-md-7">
@@ -35,10 +35,10 @@
 
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Riwayat reservasi</h5>
+        <h6 class="mb-0">Riwayat reservasi</h6>
         <router-link :to="{ name: 'AddRes', params: { id: id } }">
           <button type="button" class="btn btn-primary btn-sm d-flex align-items-center">
-            <span class="material-icons-outlined">add</span>
+            <span class="material-icons-outlined md-18">add</span>
           </button>
         </router-link>
       </div>
@@ -56,6 +56,7 @@
                 <th>Lokasi</th>
                 <th>Ket</th>
                 <th>Usia/BB</th>
+                <th>Next Treat.</th>
                 <th>status</th>
                 <th>Action</th>
               </tr>
@@ -71,6 +72,7 @@
                 <td>{{ res.lokasi }}</td>
                 <td>{{ res.ket }}</td>
                 <td>{{ res.growth }}</td>
+                <td>{{ res.nextTreat }}</td>
                 <td>{{ res.status }}</td>
                 <td>
                   <router-link :to="{ name:'EditRes', params: { id: res.id } }">
@@ -84,12 +86,13 @@
         </div>
       </div>
     </div>
-  
-    <br><br>
-    <button>
-      <router-link :to="{ name:'EditCust', params: { id: id } }">Edit Customer</router-link>
-    </button>
-    <button @click="deleteCust(id, cust.nama)">Hapus Customer</button>
+
+    <div class="d-flex justify-content-center mt-4">
+      <router-link :to="{ name:'EditCust', params: { id: id } }">
+        <button type="button" class="btn btn-primary btn-sm">Edit Customer</button>
+      </router-link>
+      <button type="button" class="btn btn-danger btn-sm ms-4" @click="deleteCust(id, cust.nama)">Hapus Customer</button>
+    </div>
   </div>
   <div v-else>
     <h3>Data customer tidak ditemukan :(</h3>
@@ -102,9 +105,13 @@ import { useRoute, useRouter } from 'vue-router'
 import getDoc from '../composables/getDoc'
 import getCollection from '../composables/getCollection'
 import delDoc from '../composables/delDoc'
+import PageTitle from '../components/small/PageTitle.vue'
 
 export default {
   props: ['id'],
+  components: {
+    PageTitle
+  },
   setup() {
     const route = useRoute()
     const router = useRouter()

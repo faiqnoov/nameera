@@ -1,7 +1,9 @@
 <template>
+  <page-title>Reservations</page-title>
+
   <div class="card">
     <div class="card-header">
-      <h5 class="mb-0">Data Reservasi</h5>
+      <h6 class="mb-0">Data Reservasi</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -61,8 +63,12 @@
 <script>
 import getCollection from '@/composables/getCollection'
 import delDoc from '@/composables/delDoc'
+import PageTitle from '../components/small/PageTitle.vue'
 
 export default {
+  components: {
+    PageTitle
+  },
   setup() {
     const { documents: reservations } = getCollection('reservations')
 

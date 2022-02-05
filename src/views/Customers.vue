@@ -1,10 +1,12 @@
 <template>
+  <page-title>Customers</page-title>
+
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Data Customer</h5>
+      <h6 class="mb-0">Data Customer</h6>
       <router-link :to="{ name: 'AddCust' }">
         <button type="button" class="btn btn-primary btn-sm d-flex align-items-center">
-          <span class="material-icons-outlined">add</span>
+          <span class="material-icons-outlined md-18">add</span>
         </button>
       </router-link>
     </div>
@@ -43,8 +45,12 @@
 
 <script>
 import getCollection from '@/composables/getCollection'
+import PageTitle from '../components/small/PageTitle.vue'
 
 export default {
+  components: {
+    PageTitle
+  },
   setup() {
     const { documents: customers } = getCollection('customers')
 

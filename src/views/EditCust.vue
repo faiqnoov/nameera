@@ -1,27 +1,42 @@
 <template>
-  <h2>Edit data customer</h2>
-
+  <page-title>Edit Customer</page-title>
+  
   <div v-if="cust">
-    <form @submit.prevent="handleUpdate()">
-      <p><input type="text" id="nama"  placeholder="nama" v-model="cust.nama"></p>
-      <p><input type="text" id="namaOrtu" placeholder="namaOrtu" v-model="cust.namaOrtu"></p>
-      <p><input type="text" id="alamat" placeholder="alamat" v-model="cust.alamat"></p>
-      <p><input type="text" id="medsos" placeholder="medsos" v-model="cust.medsos"></p>
-      <p><input type="date" id="tglLahir" placeholder="tglLahir" v-model="cust.tglLahir"></p>
-      <p><input type="text" id="noTelp" placeholder="noTelp" v-model="cust.noTelp"></p>
-      
-      <button>Save Changes</button>
-    </form>
-
-    <div>
-      <ul>
-        <li>{{cust.nama}}</li>
-        <li>{{cust.namaOrtu}}</li>
-        <li>{{cust.alamat}}</li>
-        <li>{{cust.medsos}}</li>
-        <li>{{cust.tglLahir}}</li>
-        <li>{{cust.noTelp}}</li>
-      </ul>
+    <div class="d-flex justify-content-center">
+      <div class="card col-md-8">
+        <div class="card-body">
+          <form @submit.prevent="handleUpdate()">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="nama" v-model="cust.nama" required>
+            </div>
+            <div class="mb-3">
+              <label for="nOrtu" class="form-label">Nama Ortu*</label>
+              <input type="text" class="form-control" id="nOrtu" aria-describedby="nOrtuHelp" v-model="cust.namaOrtu">
+              <div id="nOrtuHelp" class="form-text">*Kosongkan jika customer termasuk kategori dewasa.</div>
+            </div>
+            <div class="mb-3">
+              <label for="alamat" class="form-label">Alamat</label>
+              <input type="text" class="form-control" id="alamat" v-model="cust.alamat">
+            </div>
+            <div class="mb-3">
+              <label for="medsos" class="form-label">Medsos</label>
+              <input type="text" class="form-control" id="medsos" v-model="cust.medsos">
+            </div>
+            <div class="mb-3">
+              <label for="tgl" class="form-label">Tgl. Lahir</label>
+              <input type="date" class="form-control" id="tgl" v-model="cust.tglLahir">
+            </div>
+            <div class="mb-3">
+              <label for="no" class="form-label">No. Telepon</label>
+              <input type="text" class="form-control" id="no" v-model="cust.noTelp">
+            </div>
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -31,11 +46,15 @@ import { useRoute, useRouter } from 'vue-router'
 import getDoc from '../composables/getDoc'
 import getCollection from '../composables/getCollection'
 import { db } from '../firebase/config'
+import PageTitle from '../components/small/PageTitle.vue'
 
 // firebase
 import { doc, updateDoc } from '@firebase/firestore'
 
 export default {
+  components: {
+    PageTitle
+  },
   setup() {
     const route = useRoute()
     const router = useRouter()

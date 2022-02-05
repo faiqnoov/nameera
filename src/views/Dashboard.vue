@@ -1,9 +1,13 @@
 <template>
-  <h1>Dashboard</h1>
+  <page-title>Dashboard</page-title>
 </template>
 
 <script>
-export default {
+import PageTitle from '../components/small/PageTitle.vue'
 
+export default {
+  components: {
+    PageTitle
+  }
 }
 </script>

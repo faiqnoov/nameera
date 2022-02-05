@@ -33,7 +33,7 @@
       </div>
     </nav>
   </div>
-  <div class="container pt-4">
+  <div class="container pt-4 pb-5">
     <router-view/>
   </div>
 </template>
@@ -71,6 +71,5 @@ export default {
 <style scoped>
 .router-link-active {
   font-weight: bold;
-  /* border-bottom: 2px solid gray; */
 }
 </style>

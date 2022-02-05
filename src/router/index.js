@@ -75,7 +75,6 @@ const routes = [
     path: '/admin/cust/:id/add-res',
     name: 'AddRes',
     component: AddRes,
-    props: true,
     beforeEnter: requireAuth
   },
   {
