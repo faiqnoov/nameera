@@ -8,6 +8,7 @@ import AddCust from '../views/AddCust.vue'
 import EditCust from '../views/EditCust.vue'
 import EditRes from '../views/EditRes.vue'
 import Dashboard from '../views/Dashboard.vue'
+import Finance from '../views/Finance.vue'
 
 // firebase
 import { auth } from '../firebase/config'
@@ -87,6 +88,12 @@ const routes = [
     path: '/admin/res',
     name: 'Reservations',
     component: Reservations,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/admin/fin',
+    name: 'Finance',
+    component: Finance,
     beforeEnter: requireAuth
   },
 ]

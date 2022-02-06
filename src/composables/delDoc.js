@@ -31,10 +31,11 @@ const delDoc = (col, docId, nama) => {
         alert('Data customer gagal dihapus.')
       }
     } 
-
+    
   } else {
     if(confirm('Yakin hapus data reservasi?') == true) {
       deleteDoc(docRef)
+      return true
     }
   }
 }

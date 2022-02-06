@@ -19,6 +19,9 @@
             <li class="nav-item">
               <router-link :to="{ name: 'Reservations' }" class="nav-link">Reservations</router-link>
             </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'Finance' }" class="nav-link">Finance</router-link>
+            </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item dropdown">

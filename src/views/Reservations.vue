@@ -65,6 +65,10 @@ import getCollection from '@/composables/getCollection'
 import delDoc from '@/composables/delDoc'
 import PageTitle from '../components/small/PageTitle.vue'
 
+// firebase
+import { db } from '../firebase/config'
+import { doc, deleteDoc } from 'firebase/firestore'
+
 export default {
   components: {
     PageTitle
@@ -73,7 +77,10 @@ export default {
     const { documents: reservations } = getCollection('reservations')
 
     const deleteRes = (id) => {
-      delDoc('reservations', id)
+      if(delDoc('reservations', id)) {
+        // delete data keuangan ybs
+        deleteDoc(doc(db, 'finance', id))
+      }
     }
 
     return { reservations, deleteRes }

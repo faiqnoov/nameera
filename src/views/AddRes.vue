@@ -76,7 +76,7 @@ import PageTitle from '../components/small/PageTitle.vue'
 
 // firebase
 import { db } from '../firebase/config'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, doc, setDoc } from 'firebase/firestore'
 
 export default {
   components: {
@@ -95,7 +95,6 @@ export default {
       biaya: null,
       biaya2: null,
       payment: null,
-      // biayaTot: data.value.biaya + data.value.biaya2,
       lokasi: null,
       ket: null,
       growth: null,
@@ -103,22 +102,25 @@ export default {
       status: false,
     })
 
-    // const jmlBiaya = computed(() => {
-    //   return data.value.biaya + data.value.biaya2
-    // })
-
     const handleSubmit = async () => {
-      console.log(data.value)
-
       const colRef = collection(db, 'reservations')
 
-      await addDoc(colRef, {
+      let docRef = await addDoc(colRef, {
         ...data.value,
         idCust: route.params.id,
         namaCust: cust.value.nama,
         createdAt: new Date(),
         lastMod: new Date()
       })
+
+      // doc id finance == doc id reservation
+      await setDoc(doc(db, "finance", docRef.id), {
+        src: 'res',
+        jenis: 'in',
+        ket: `Res. ${docRef.id} (${cust.value.nama})`,
+        jml: data.value.biaya + data.value.biaya2,
+        tgl: data.value.tgl,
+      });
 
       // reset form
       data.value = ''

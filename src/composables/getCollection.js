@@ -18,6 +18,8 @@ const getCollection = (col, que) => {
     }
   } else if(col == 'customers') {
     q = query(colRef, orderBy("createdAt"))
+  } else if(col == 'finance') {
+    q = query(colRef, orderBy("tgl", "desc"))
   }
 
   let results = []
