@@ -23,6 +23,7 @@ const getCollection = (col, que) => {
   let results = []
 
   const unsub = onSnapshot(q, (snapshot) => {
+    console.log('TRRIGERED')
     snapshot.docs.forEach(doc => {
       // console.log('snapshot: ', typeof(doc), doc.data().treatment)
       results.push({ ...doc.data(), id: doc.id })
