@@ -1,47 +1,48 @@
 <template>
   <h1>Keuangan</h1>
 
-  <div>
+  <div v-if="finance">
     <table>
       <tr>
-        <th>Tanggal</th>
-        <th>Ket / Id Reservasi</th>
         <th>Jenis</th>
+        <th>Ket / Id Reservasi</th>
+        <th>Tanggal</th>
         <th>Nominal</th>
       </tr>
-      <tr v-for="res in reservations" :key="res.id">
-        <td>{{ res.tgl }}</td>
-        <td>{{ res.id }}</td>
-        <td>masuk</td>
-        <td>{{ res.biaya + res.biaya2 }}</td>
+      <tr v-for="fin in finance" :key="fin.id">
+        <td>in</td>
+        <td>{{ fin.ket }}</td>
+        <td>{{ fin.tgl }}</td>
+        <td>{{ fin.jml }}</td>
       </tr>
       <tr>
-        <th>Total</th>
-        <th></th>
-        <th></th>
-        <th>{{ totMasuk }}</th>
+        <th colspan="3">Total</th>
+        <th @click="getTotal()">{{total}}</th>
       </tr>
     </table>
   </div>
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
 import getCollection from '../composables/getCollection'
 
 export default {
   setup() {
-    const { results: res, documents: reservations } = getCollection('reservations')
-    console.log(res)
+    const { documents: finance, results: items } = getCollection('finance')
+    console.log(finance)
 
-    let totMasuk = 1
-    res.forEach((r) => {
-      totMasuk += (r.value.biaya + r.value.biaya2)
-      console.log(r.value.biaya + r.value.biaya2)
-      console.log(totMasuk)
-      console.log('oke')
-    })
+    let total = ref(0)
 
-    return { reservations, totMasuk }
+    const getTotal = () => {
+      total.value = 0
+      items.forEach((item) => {
+        total.value += item.jml
+      })
+      // console.log('total: ', total)
+    }
+
+    return { finance, getTotal, total }
   }
 }
 </script>

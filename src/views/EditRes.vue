@@ -52,6 +52,7 @@ export default {
 
     const handleUpdate = () => {
       const docRef = doc(db, 'reservations', route.params.id)
+      const docRef2 = doc(db, 'finance', route.params.id)
 
       updateDoc(docRef, { 
         tgl: res.value.tgl,
@@ -66,6 +67,11 @@ export default {
         nextTreat: res.value.nextTreat,
         // status: res.value.status,
         lastMod: new Date()
+      })
+
+      // update data keuangan ybs
+      updateDoc(docRef2, {
+        jml: res.value.biaya + res.value.biaya2
       })
 
       router.go(-1)

@@ -42,7 +42,7 @@ import getDoc from '../composables/getDoc'
 
 // firebase
 import { db } from '../firebase/config'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, doc, setDoc } from 'firebase/firestore'
 
 export default {
   props: ['id'],
@@ -50,7 +50,6 @@ export default {
     const route = useRoute()
     const router = useRouter()
     const { document: cust } = getDoc('customers', route.params.id)
-    // console.log(cust)
 
     const data = ref({
       tgl: null,
@@ -59,7 +58,6 @@ export default {
       kodeProd: null,
       biaya: null,
       biaya2: null,
-      // biayaTot: data.value.biaya + data.value.biaya2,
       lokasi: null,
       ket: null,
       growth: null,
@@ -67,16 +65,12 @@ export default {
       status: false,
     })
 
-    // const jmlBiaya = computed(() => {
-    //   return data.value.biaya + data.value.biaya2
-    // })
-
     const handleSubmit = async () => {
       console.log(data.value)
 
       const colRef = collection(db, 'reservations')
 
-      await addDoc(colRef, {
+      let res = await addDoc(colRef, {
         ...data.value,
         idCust: route.params.id,
         namaCust: cust.value.nama,
@@ -84,11 +78,22 @@ export default {
         lastMod: new Date()
       })
 
+      // doc id finance == doc id reservation
+      await setDoc(doc(db, "finance", res.id), {
+        // idRes: res.id,
+        src: 'res',
+        jenis: 'in',
+        ket: `Res. ${res.id} (${cust.value.nama})`,
+        jml: data.value.biaya + data.value.biaya2,
+        tgl: data.value.tgl,
+      });
+
       // reset form
       data.value = ''
 
       router.push({ name: 'CustDetails', props: { id: route.params.id }})
     }
+
 
     return { data, handleSubmit }
   }

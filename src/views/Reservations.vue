@@ -50,12 +50,19 @@
 import getCollection from '@/composables/getCollection'
 import delDoc from '@/composables/delDoc'
 
+// firebase
+import { db } from '../firebase/config'
+import { doc, deleteDoc } from 'firebase/firestore'
+
 export default {
   setup() {
     const { documents: reservations } = getCollection('reservations')
 
     const deleteRes = (id) => {
       delDoc('reservations', id)
+
+      // delete data keuangan ybs
+      deleteDoc(doc(db, 'finance', id))
     }
 
     return { reservations, deleteRes }
