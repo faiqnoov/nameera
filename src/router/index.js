@@ -9,6 +9,8 @@ import EditCust from '../views/EditCust.vue'
 import EditRes from '../views/EditRes.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Finance from '../views/Finance.vue'
+import AddFin from '../views/AddFin.vue'
+import EditFin from '../views/EditFin.vue'
 
 // firebase
 import { auth } from '../firebase/config'
@@ -94,6 +96,18 @@ const routes = [
     path: '/admin/fin',
     name: 'Finance',
     component: Finance,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/admin/fin/add',
+    name: 'AddFin',
+    component: AddFin,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/admin/fin/:id/edit',
+    name: 'EditFin',
+    component: EditFin,
     beforeEnter: requireAuth
   },
 ]

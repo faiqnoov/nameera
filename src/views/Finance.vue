@@ -2,6 +2,14 @@
   <page-title>Finance</page-title>
 
   <div v-if="finance" class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h6 class="mb-0">Data Keuangan</h6>
+      <router-link :to="{ name: 'AddFin' }">
+        <button type="button" class="btn btn-primary btn-sm d-flex align-items-center">
+          <span class="material-icons-outlined md-18">add</span>
+        </button>
+      </router-link>
+    </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover table-sm">
@@ -11,14 +19,21 @@
               <th>Ket / Id Reservasi</th>
               <th>Tanggal</th>
               <th>Nominal</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="fin in finance" :key="fin.id">
-            <td>in</td>
+            <td>{{ fin.jenis }}</td>
             <td>{{ fin.ket }}</td>
             <td>{{ fin.tgl }}</td>
             <td>{{ fin.jml }}</td>
+            <td>
+              <span @click="deleteFin(fin.id)" class="material-icons-outlined text-danger">delete_outline</span>
+              <router-link :to="{ name:'EditFin', params: { id: fin.id } }" v-if="fin.src=='manual'">
+                <span class="material-icons-outlined text-primary">edit</span>
+              </router-link>
+            </td>
           </tr>
           </tbody>
           <thead>
@@ -37,6 +52,7 @@
 import { ref } from '@vue/reactivity'
 import getCollection from '../composables/getCollection'
 import PageTitle from '../components/small/PageTitle.vue'
+import delDoc from '@/composables/delDoc'
 
 export default {
   components: {
@@ -56,7 +72,11 @@ export default {
       })
     }
 
-    return { finance, getTotal, total }
+    const deleteFin = (id) => {
+      delDoc('finance', id)
+    }
+
+    return { finance, getTotal, total, deleteFin }
   }
 }
 </script>

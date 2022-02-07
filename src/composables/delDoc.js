@@ -33,7 +33,7 @@ const delDoc = (col, docId, nama) => {
     } 
     
   } else {
-    if(confirm('Yakin hapus data reservasi?') == true) {
+    if(confirm('Yakin hapus data?') == true) {
       deleteDoc(docRef)
       return true
     }
