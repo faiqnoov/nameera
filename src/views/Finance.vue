@@ -15,31 +15,41 @@
         <table class="table table-bordered table-striped table-hover table-sm">
           <thead class="table-light">
             <tr>
-              <th>Jenis</th>
-              <th>Ket / Id Reservasi</th>
+              <th>Keterangan / Id Reservasi</th>
               <th>Tanggal</th>
-              <th>Nominal</th>
+              <th>Masuk</th>
+              <th>Keluar</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="fin in finance" :key="fin.id">
-            <td>{{ fin.jenis }}</td>
             <td>{{ fin.ket }}</td>
             <td>{{ fin.tgl }}</td>
-            <td>{{ fin.jml }}</td>
             <td>
-              <span @click="deleteFin(fin.id)" class="material-icons-outlined text-danger">delete_outline</span>
-              <router-link :to="{ name:'EditFin', params: { id: fin.id } }" v-if="fin.src=='manual'">
-                <span class="material-icons-outlined text-primary">edit</span>
-              </router-link>
+              <span v-if="fin.jenis=='in'">{{ fin.jml }}</span>
+              <span v-else></span>
+            </td>
+            <td>
+              <span v-if="fin.jenis=='in'"></span>
+              <span v-else>{{ fin.jml }}</span>
+            </td>
+            <td>
+              <span v-if="fin.src=='manual'">
+                <router-link :to="{ name:'EditFin', params: { id: fin.id } }">
+                  <span class="material-icons-outlined text-primary">edit</span>
+                </router-link>
+                <span @click="deleteFin(fin.id)" class="material-icons-outlined text-danger">delete_outline</span>
+              </span>
             </td>
           </tr>
           </tbody>
           <thead>
             <tr>
-              <th colspan="3">Total</th>
-              <th @click="getTotal()">{{total}}</th>
+              <th></th>
+              <th>Total :</th>
+              <th colspan="2" @click="getTotal()">{{total}}</th>
+              <th></th>
             </tr>
           </thead>
         </table>

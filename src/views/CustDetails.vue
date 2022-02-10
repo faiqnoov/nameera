@@ -57,7 +57,7 @@
                 <th>Ket</th>
                 <th>Usia/BB</th>
                 <th>Next Treat.</th>
-                <th>status</th>
+                <!-- <th>status</th> -->
                 <th>Action</th>
               </tr>
             </thead>
@@ -73,7 +73,7 @@
                 <td>{{ res.ket }}</td>
                 <td>{{ res.growth }}</td>
                 <td>{{ res.nextTreat }}</td>
-                <td>{{ res.status }}</td>
+                <!-- <td>{{ res.status }}</td> -->
                 <td>
                   <router-link :to="{ name:'EditRes', params: { id: res.id } }">
                     <span class="material-icons-outlined text-primary">edit</span>

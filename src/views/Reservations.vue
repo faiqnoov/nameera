@@ -21,8 +21,8 @@
               <th scope="col">Lokasi</th>
               <th scope="col">Ket</th>
               <th scope="col">Usia/BB</th>
-              <th scope="col">Next</th>
-              <th scope="col">status</th>
+              <th scope="col">Next Treat.</th>
+              <!-- <th scope="col">status</th> -->
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -30,7 +30,7 @@
             <tr v-for="res in reservations" :key="res.id">
               <td>
                 <router-link :to="{ name: 'CustDetails', params: { id: res.idCust }}">
-                  {{ res.namaCust }} <span class="material-icons-outlined md-14">open_in_new</span>
+                  {{ res.namaCust }} <span class="material-icons-outlined md-14 text-primary">open_in_new</span>
                 </router-link>
               </td>
               <td>{{ res.tgl }}</td>
@@ -44,7 +44,7 @@
               <td>{{ res.ket }}</td>
               <td>{{ res.growth }}</td>
               <td>{{ res.nextTreat }}</td>
-              <td>{{ res.status }}</td>
+              <!-- <td>{{ res.status }}</td> -->
               <td>
                 <router-link :to="{ name:'EditRes', params: { id: res.id } }">
                   <span class="material-icons-outlined text-primary">edit</span>

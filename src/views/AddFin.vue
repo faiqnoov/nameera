@@ -2,7 +2,7 @@
   <page-title>Add Financial Records</page-title>
 
   <div class="d-flex justify-content-center">
-    <div class="card col-md-8">
+    <div class="card col col-sm-8 col-md-6 col-lg-4">
       <div class="card-body">
         <form @submit.prevent="handleSubmit">
           <div class="mb-3">
@@ -57,9 +57,13 @@ export default {
     })
 
     const handleSubmit = async () => {
-      console.log(data.value)
-
       const colRef = collection(db, 'finance')
+
+      if(data.value.jenis == 'out') {
+        data.value.jml = -Math.abs(data.value.jml)
+      } else {
+        data.value.jml = Math.abs(data.value.jml)
+      }
 
       await addDoc(colRef, {
         ...data.value,

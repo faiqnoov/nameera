@@ -2,7 +2,7 @@
   <div v-if="user" id="nav">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <router-link :to="{ name: 'Dashboard' }" class="navbar-brand">
+        <router-link :to="{ name: 'Reservations' }" class="navbar-brand">
           <img src="../assets/img/weblogo.svg" alt="logo" height="24" class="align-top">
         </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,14 +10,14 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link :to="{ name: 'Dashboard' }" class="nav-link">Dashboard</router-link>
+            </li> -->
+            <li class="nav-item">
+              <router-link :to="{ name: 'Reservations' }" class="nav-link">Reservations</router-link>
             </li>
             <li class="nav-item">
               <router-link :to="{ name: 'Customers' }" class="nav-link">Customers</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{ name: 'Reservations' }" class="nav-link">Reservations</router-link>
             </li>
             <li class="nav-item">
               <router-link :to="{ name: 'Finance' }" class="nav-link">Finance</router-link>

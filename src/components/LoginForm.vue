@@ -46,7 +46,7 @@ export default {
     const handleSubmit = async () => {
       await login(email.value, password.value)
       if(!error.value) {
-        router.push({ name: 'Dashboard' })
+        router.push({ name: 'Reservations' })
       }
     }
 

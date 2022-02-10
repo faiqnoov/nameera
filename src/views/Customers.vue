@@ -27,7 +27,7 @@
             <tr v-for="cust in customers" :key="cust.id">
               <td>
                 <router-link :to="{ name: 'CustDetails', params: { id: cust.id }}">
-                  {{ cust.nama }} <span class="material-icons-outlined md-14">open_in_new</span>
+                  {{ cust.nama }} <span class="material-icons-outlined md-14 text-primary">open_in_new</span>
                 </router-link>
               </td>
               <td>{{ cust.namaOrtu }}</td>

@@ -25,7 +25,7 @@
             <input type="date" class="form-control" id="tgl" v-model="fin.tgl">
           </div>
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
           </div>
         </form>
       </div>
@@ -54,6 +54,12 @@ export default {
 
     const handleUpdate = () => {
       const docRef = doc(db, 'finance', route.params.id)
+
+      if(fin.value.jenis == 'out') {
+        fin.value.jml = -Math.abs(fin.value.jml)
+      } else {
+        fin.value.jml = Math.abs(fin.value.jml)
+      }
 
       updateDoc(docRef, { 
         jenis: fin.value.jenis,
