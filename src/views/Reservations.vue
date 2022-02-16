@@ -13,14 +13,14 @@
               <th scope="col">Nama Customer</th>
               <th scope="col">Tanggal</th>
               <th scope="col">Jam</th>
+              <th scope="col">Lokasi</th>
               <th scope="col">Treatment</th>
-              <th scope="col">Kode Prod.</th>
+              <th scope="col">Keterangan</th>
+              <th scope="col">Usia/BB</th>
+              <th scope="col">KP</th>
               <th scope="col">Biaya</th>
               <th scope="col">Biaya2</th>
               <th scope="col">Total</th>
-              <th scope="col">Lokasi</th>
-              <th scope="col">Ket</th>
-              <th scope="col">Usia/BB</th>
               <th scope="col">Next Treat.</th>
               <!-- <th scope="col">status</th> -->
               <th scope="col">Action</th>
@@ -35,14 +35,14 @@
               </td>
               <td>{{ res.tgl }}</td>
               <td>{{ res.jam }}</td>
+              <td>{{ res.lokasi }}</td>
               <td>{{ res.treatment }}</td>
+              <td>{{ res.ket }}</td>
+              <td>{{ res.growth }}</td>
               <td>{{ res.kodeProd }}</td>
               <td>{{ res.biaya }}</td>
               <td>{{ res.biaya2 }}</td>
               <td>{{ res.biaya + res.biaya2 }}</td>
-              <td>{{ res.lokasi }}</td>
-              <td>{{ res.ket }}</td>
-              <td>{{ res.growth }}</td>
               <td>{{ res.nextTreat }}</td>
               <!-- <td>{{ res.status }}</td> -->
               <td>

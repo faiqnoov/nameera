@@ -15,7 +15,7 @@
           </tr>
           <tr>
             <th scope="row">Alamat</th>
-            <td>: {{ cust.alamat }}</td>
+            <td class="multiline">: {{ cust.alamat }}</td>
           </tr>
           <tr>
             <th scope="row">Medsos</th>
@@ -49,13 +49,13 @@
               <tr>
                 <th>Tanggal</th>
                 <th>Jam</th>
+                <th>Lokasi</th>
                 <th>Treatment</th>
+                <th>Keterangan</th>
+                <th>Usia/BB</th>
                 <th>KP</th>
                 <th>Biaya</th>
                 <th>Biaya2</th>
-                <th>Lokasi</th>
-                <th>Ket</th>
-                <th>Usia/BB</th>
                 <th>Next Treat.</th>
                 <!-- <th>status</th> -->
                 <th>Action</th>
@@ -65,13 +65,13 @@
               <tr v-for="res in reservations" :key="res.id">
                 <td>{{ res.tgl }}</td>
                 <td>{{ res.jam }}</td>
+                <td>{{ res.lokasi }}</td>
                 <td>{{ res.treatment }}</td>
+                <td>{{ res.ket }}</td>
+                <td>{{ res.growth }}</td>
                 <td>{{ res.kodeProd }}</td>
                 <td>{{ res.biaya }}</td>
                 <td>{{ res.biaya2 }}</td>
-                <td>{{ res.lokasi }}</td>
-                <td>{{ res.ket }}</td>
-                <td>{{ res.growth }}</td>
                 <td>{{ res.nextTreat }}</td>
                 <!-- <td>{{ res.status }}</td> -->
                 <td>

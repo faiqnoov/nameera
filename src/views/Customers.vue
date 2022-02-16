@@ -18,9 +18,9 @@
               <th>Nama</th>
               <th>Nama Ortu</th>
               <th>Alamat</th>
+              <th>No. Telp.</th>
               <th>Medsos</th>
               <th>Tgl. Lahir</th>
-              <th>No. Telp.</th>
             </tr>
           </thead>
           <tbody>
@@ -31,10 +31,10 @@
                 </router-link>
               </td>
               <td>{{ cust.namaOrtu }}</td>
-              <td>{{ cust.alamat }}</td>
-              <td>{{ cust.medsos }}</td>
-              <td>{{ cust.tglLahir }}</td>
+              <td class="multiline">{{ cust.alamat }}</td>
               <td>{{ cust.noTelp }}</td>
+              <td class="multiline">{{ cust.medsos }}</td>
+              <td>{{ cust.tglLahir }}</td>
             </tr>
           </tbody>
         </table>

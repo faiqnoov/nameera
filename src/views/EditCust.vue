@@ -74,8 +74,7 @@ export default {
         alamat: cust.value.alamat,
         medsos: cust.value.medsos,
         tglLahir: cust.value.tglLahir,
-        noTelp: cust.value.noTelp,
-        lastMod: new Date()
+        noTelp: cust.value.noTelp
       })
 
       // update field nama data reservasi ybs

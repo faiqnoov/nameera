@@ -70,8 +70,7 @@ export default {
 
       await addDoc(colRef, {
         ...data.value,
-        createdAt: new Date(),
-        lastMod: new Date()
+        createdAt: new Date()
       })
 
       // reset form

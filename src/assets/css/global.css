@@ -15,10 +15,8 @@ table th {
   font-weight: 600;
 }
 
-table td, th {
+table td:not(.multiline) {
   white-space: nowrap;
-  overflow: hidden;
-  vertical-align: middle;
 }
 
 /* material icons */

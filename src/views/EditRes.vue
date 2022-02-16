@@ -105,7 +105,6 @@ export default {
         growth: res.value.growth,
         nextTreat: res.value.nextTreat,
         // status: res.value.status,
-        lastMod: new Date()
       })
 
       // update data keuangan ybs

@@ -109,8 +109,7 @@ export default {
         ...data.value,
         idCust: route.params.id,
         namaCust: cust.value.nama,
-        createdAt: new Date(),
-        lastMod: new Date()
+        createdAt: new Date()
       })
 
       // doc id finance == doc id reservation
