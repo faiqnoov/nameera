@@ -26,13 +26,13 @@
             <tr v-for="fin in finance" :key="fin.id">
             <td>{{ fin.ket }}</td>
             <td>{{ fin.tgl }}</td>
-            <td>
-              <span v-if="fin.jenis=='in'">{{ fin.jml }}</span>
+            <td class="text-end">
+              <span v-if="fin.jenis=='in'">{{ new Intl.NumberFormat('de-DE').format(fin.jml) }}</span>
               <span v-else></span>
             </td>
-            <td>
+            <td class="text-end">
               <span v-if="fin.jenis=='in'"></span>
-              <span v-else>{{ fin.jml }}</span>
+              <span v-else>{{ new Intl.NumberFormat('de-DE').format(fin.jml) }}</span>
             </td>
             <td>
               <span v-if="fin.src=='manual'">
@@ -48,7 +48,7 @@
             <tr>
               <th></th>
               <th>Total :</th>
-              <th colspan="2" @click="getTotal()">{{total}}</th>
+              <th colspan="2" class="text-end" @click="getTotal()">{{ new Intl.NumberFormat('de-DE').format(total) }}</th>
               <th></th>
             </tr>
           </thead>

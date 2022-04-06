@@ -40,9 +40,9 @@
               <td>{{ res.ket }}</td>
               <td>{{ res.growth }}</td>
               <td>{{ res.kodeProd }}</td>
-              <td>{{ res.biaya }}</td>
-              <td>{{ res.biaya2 }}</td>
-              <td>{{ res.biaya + res.biaya2 }}</td>
+              <td class="text-end">{{ new Intl.NumberFormat('de-DE').format(res.biaya) }}</td>
+              <td class="text-end">{{ new Intl.NumberFormat('de-DE').format(res.biaya2) }}</td>
+              <td class="text-end">{{ new Intl.NumberFormat('de-DE').format(res.biaya + res.biaya2) }}</td>
               <td>{{ res.nextTreat }}</td>
               <!-- <td>{{ res.status }}</td> -->
               <td>
